@@ -7,6 +7,10 @@ server.use(jsonServer.defaults());
 
 const router = jsonServer.router(db);
 server.use(router);
+server.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  return next();
+});
 
 server.listen(3777);
 
